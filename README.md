@@ -57,3 +57,18 @@ docker run -i -t --rm \
 ```
 
 On macOS, you can open Docker preferences to control the number of CPUs and how much RAM allocation docker is given, which may affect the performance of iNZight.
+
+## Cool, but how do I load data?
+
+Docker runs iNZight in its own environment, but you can share directories with it. For example, you could share your `Documents` folder with iNZight so you can load and save data by adding `-v $HOME/Documents:/iNZightVIT` to the `docker run` command. So, like this:
+
+```
+docker run -i -t --rm \
+  -e DISPLAY=$DISPLAY \ # this is different on macOS
+  -u docker \
+  -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+  -v $HOME/Documents:/iNZightVIT \
+  inzight:latest
+```
+
+Now you'll be able to see your files from iNZight.
