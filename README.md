@@ -12,7 +12,7 @@ Or build it yourself (using `sudo`):
 ```
 # git clone https://github.com:iNZightVIT/docker.git
 # cd docker
-docker built --build-arg GITHUB_PAT=${GITHUB_PAT} -t inzight:latest .
+docker build --build-arg GITHUB_PAT=${GITHUB_PAT} -t inzight:latest .
 ```
 where `GITHUB_PAT` is your own Github token (required for `remotes::install_github`).
 

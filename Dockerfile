@@ -1,5 +1,6 @@
 FROM rocker/r-bspm:20.04
 
+ARG GITHUB_PAT
 VOLUME /iNZightVIT
 
 # RUN apt-get update \
@@ -23,6 +24,7 @@ VOLUME /iNZightVIT
 ADD install_inzight.R .
 RUN Rscript install_inzight.R
 
+ADD profile.R /home/docker/.Rprofile
 WORKDIR /iNZightVIT
 
 CMD ["R"]
