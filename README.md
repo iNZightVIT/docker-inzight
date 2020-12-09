@@ -20,12 +20,40 @@ where `GITHUB_PAT` is your own Github token (required for `remotes::install_gith
 
 This requires some X11 trickery...
 
-On Linux (again using `sudo`):
+### Linux
+
+Remember the `sudo` command:
 ```
 docker run -i -t --rm \
   -e DISPLAY=$DISPLAY \
-  -e GITHUB_PAT=$GITHUB_PATH \
   -u docker \
   -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
   inzight:latest
 ```
+
+### Mac 
+
+Because "Apple", there's a few more steps required (sorry!!)
+
+We assume you've got it already, but you'll need to install docker if you haven't.
+
+1. Install XQuartz from https://www.xquartz.org/
+2. Start XQuartz (use spotlight to find it)
+  - Go to Preferences > Security, and ensure the 'Allow connections from network clients' checkbox is ... checked!
+3. **Restart** XQuartz (quick and reopen)
+4. Start docker (if it isn't already running)
+5. Open terminal and run the following commands:
+```
+xhost + ${hostname}
+export HOSTNAME=`hostname`
+```
+6. Have a go at starting iNZight (remember `sudo`):
+```
+docker run -i -t --rm \
+  -e DISPLAY=${hostname}:0 \
+  -u docker \
+  -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+  inzight:latest
+```
+
+On macOS, you can open Docker preferences to control the number of CPUs and how much RAM allocation docker is given, which may affect the performance of iNZight.
