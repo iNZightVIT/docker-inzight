@@ -28,7 +28,7 @@ docker run -i -t --rm \
   -e DISPLAY=$DISPLAY \
   -u docker \
   -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
-  inzight:latest
+  inzight/inzight:latest
 ```
 
 ### Mac 
@@ -53,7 +53,7 @@ docker run -i -t --rm \
   -e DISPLAY=${hostname}:0 \
   -u docker \
   -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
-  inzight:latest
+  inzight/inzight:latest
 ```
 
 On macOS, you can open Docker preferences to control the number of CPUs and how much RAM allocation docker is given, which may affect the performance of iNZight.
@@ -68,7 +68,7 @@ docker run -i -t --rm \
   -u docker \
   -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
   -v $HOME/Documents:/iNZightVIT \
-  inzight:latest
+  inzight/inzight:latest
 ```
 
 Now you'll be able to see your files from iNZight.
